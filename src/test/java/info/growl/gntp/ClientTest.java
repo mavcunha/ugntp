@@ -49,12 +49,12 @@ public class ClientTest {
         verify(channel).write(argThat(registerMessageMatcher(application, notifications)));
     }
 
-    private Matcher<RegisterMessage> registerMessageMatcher(final Application application, final Notifications notifications) {
-        return new ArgumentMatcher<RegisterMessage>(){
-            RegisterMessage message = new RegisterMessage(application, notifications);
+    private Matcher<Message> registerMessageMatcher(final Application application, final Notifications notifications) {
+        return new ArgumentMatcher<Message>(){
+            Message message = new RegisterMessage(application, notifications);
             @Override
             public boolean matches(Object o) {
-                return message.toString().equals(o.toString());
+                return message.render().equals(((Message)o).render());
             }
         };
     }

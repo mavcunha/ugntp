@@ -9,6 +9,6 @@ import org.jboss.netty.util.CharsetUtil;
 public class MessageEncoder extends OneToOneEncoder {
     @Override
     protected Object encode(ChannelHandlerContext channelHandlerContext, Channel channel, Object o) throws Exception {
-        return ChannelBuffers.wrappedBuffer(((RegisterMessage) o).toString().getBytes(CharsetUtil.UTF_8));
+        return ChannelBuffers.wrappedBuffer(((Message) o).render().getBytes(CharsetUtil.UTF_8));
     }
 }

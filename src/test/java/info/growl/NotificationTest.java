@@ -28,6 +28,21 @@ public class NotificationTest {
     @Test
     public void shouldReturnItSelfGNTPFormatted() {
         Notification notification = new Notification("My Notification");
-        assertThat(notification.toString(), is(equalTo("Notification-Name: My Notification" + Delimiter.EOL)));
+        assertThat(notification.toString(), is(equalTo(
+                "Notification-Name: My Notification" + Delimiter.EOL +
+                "Notification-Enabled: True" + Delimiter.EOL
+        )));
+    }
+
+    @Test
+    public void newNotificationIsEnableByDefault() {
+        Notification notification = new Notification("My Notification");
+        assertThat(notification.isEnabled(), is(true));
+    }
+
+    @Test
+    public void notificationCanBeCreatedDisabled() {
+        Notification notification = new Notification("My Notification", false);
+        assertThat(notification.isEnabled(), is(false));
     }
 }

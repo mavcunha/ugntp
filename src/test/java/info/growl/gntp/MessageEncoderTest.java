@@ -26,12 +26,12 @@ public class MessageEncoderTest {
     public void shouldWriteIntoChannelAMessageAsBytes() throws Exception {
         MessageEncoder encoder = new MessageEncoder();
 
-        RegisterMessage registerMessage = new RegisterMessage(
+        Message message = new RegisterMessage(
                 new Application("my app"),
                 new Notifications(new Notification("notification")));
 
-        ChannelBuffer actualEncode = (ChannelBuffer) encoder.encode(null, channel, registerMessage);
+        ChannelBuffer actualEncode = (ChannelBuffer) encoder.encode(null, channel, message);
 
-        assertThat(actualEncode.array(), is(registerMessage.toString().getBytes(CharsetUtil.UTF_8)));
+        assertThat(actualEncode.array(), is(message.render().getBytes(CharsetUtil.UTF_8)));
     }
 }

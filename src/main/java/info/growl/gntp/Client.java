@@ -23,11 +23,11 @@ public class Client {
         send(new RegisterMessage(application, notifications));
     }
 
-    private void send(RegisterMessage registerMessage) {
+    private void send(Message message) {
         ChannelFuture channelFuture = bootstrap.connect(socketAddress);
         channelFuture.awaitUninterruptibly(2, TimeUnit.SECONDS);
         if (channelFuture.isSuccess()) {
-            channelFuture.getChannel().write(registerMessage);
+            channelFuture.getChannel().write(message);
         } else {
             System.out.println("Fail: " + channelFuture.getCause());
         }

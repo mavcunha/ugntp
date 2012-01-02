@@ -3,6 +3,7 @@ package info.growl.gntp;
 import info.growl.Application;
 import info.growl.Notification;
 import info.growl.Notifications;
+import org.junit.Before;
 import org.junit.Test;
 
 import static info.growl.gntp.Delimiter.*;
@@ -10,29 +11,38 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class RegisterMessageTest {
+public class RegisterMessageTest extends MessageTest {
 
-    @Test
-    public void shouldReturnItSelfFormatted() {
-        Application application = new Application("My Application");
-        Notifications notifications = new Notifications(
+    private Application application;
+    private Notifications notifications;
+
+    @Before
+    public void setUp() {
+        application = new Application("My Application");
+        notifications = new Notifications(
                 new Notification("1 notification"),
                 new Notification("2 notification")
         );
-
-        RegisterMessage registerMessage = new RegisterMessage(application, notifications);
-
-        assertThat(registerMessage.toString(), is(equalTo(registerMessageBody())));
     }
 
-    private String registerMessageBody() {
+    @Test
+    public void shouldReturnItSelfFormatted() {
+        Message message = new RegisterMessage(application, notifications);
+        assertThat(message.render(), is(equalTo(registerMessageBody(message))));
+    }
+
+    private String registerMessageBody(Message message) {
         return
-                "Application-Name: My Application" + EOL +
+                message.header() +
+                application.toString() +
                 "Notifications-Count: 2" + EOL +
                 EOL +
-                "Notification-Name: 1 notification" + EOL +
-                EOL +
-                "Notification-Name: 2 notification" + EOL +
+                notifications.toString() +
                 EOM;
+    }
+
+    @Override
+    Message getConcrete() {
+        return new RegisterMessage(application, notifications);
     }
 }
