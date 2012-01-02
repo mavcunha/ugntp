@@ -1,7 +1,9 @@
 package info.growl;
 
+import info.growl.gntp.Delimiter;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -21,5 +23,11 @@ public class NotificationTest {
     @Test(expected = RuntimeException.class)
     public void shouldNotAcceptAEmptyName() {
         new Notification("");
+    }
+
+    @Test
+    public void shouldReturnItSelfGNTPFormatted() {
+        Notification notification = new Notification("My Notification");
+        assertThat(notification.toString(), is(equalTo("Notification-Name: My Notification" + Delimiter.EOL)));
     }
 }

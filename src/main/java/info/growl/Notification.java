@@ -1,5 +1,7 @@
 package info.growl;
 
+import info.growl.gntp.Delimiter;
+
 public class Notification {
 
     private final String name;
@@ -13,5 +15,10 @@ public class Notification {
 
     public String name() {
         return this.name;
+    }
+
+    @Override
+    public String toString() {
+        return "Notification-Name: " + this.name + Delimiter.EOL;
     }
 }

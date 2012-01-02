@@ -1,5 +1,7 @@
 package info.growl;
 
+import info.growl.gntp.Delimiter;
+
 public class Application {
 
     private final String name;
@@ -14,4 +16,8 @@ public class Application {
         return this.name;
     }
 
+    @Override
+    public String toString() {
+        return "Application-Name: " + this.name + Delimiter.EOL;
+    }
 }
