@@ -10,12 +10,12 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.concurrent.TimeUnit;
 
-public class Client {
+public class GNTPClient {
 
     private final SocketAddress socketAddress;
     private final ClientBootstrap bootstrap;
 
-    public Client(Configuration configuration, ClientBootstrap bootstrap) {
+    public GNTPClient(Configuration configuration, ClientBootstrap bootstrap) {
         this.bootstrap = bootstrap;
         this.socketAddress = new InetSocketAddress(configuration.host(), configuration.port());
     }
@@ -30,7 +30,7 @@ public class Client {
         if (channelFuture.isSuccess()) {
             channelFuture.getChannel().write(message);
         } else {
-            System.out.println("Fail: " + channelFuture.getCause());
+            channelFuture.getCause().printStackTrace();
         }
     }
 

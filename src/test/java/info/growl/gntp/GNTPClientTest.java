@@ -17,7 +17,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.*;
 
-public class ClientTest {
+public class GNTPClientTest {
 
     private ClientBootstrap clientBootstrap;
     private Configuration config;
@@ -41,7 +41,7 @@ public class ClientTest {
         Application application = new Application("my app");
         Notifications notifications = new Notifications(new Notification("my notification"));
 
-        Client client = new Client(config, clientBootstrap);
+        GNTPClient client = new GNTPClient(config, clientBootstrap);
 
         client.register(application, notifications);
 
@@ -54,12 +54,23 @@ public class ClientTest {
         Application application = new Application("my app");
         Notification notification = new Notification("my notification");
 
-        Client client = new Client(config, clientBootstrap);
+        GNTPClient client = new GNTPClient(config, clientBootstrap);
         
         client.notify(application, notification);
 
         NotifyMessage notifyMessage = new NotifyMessage(application, notification);
         verify(channel).write(argThat(messageMatcher(notifyMessage)));
+    }
+
+    @Test
+    public void shouldGetCauseIfCannotConnect() {
+        when(channelFuture.isSuccess()).thenReturn(false);
+        when(channelFuture.getCause()).thenReturn(new RuntimeException());
+
+        GNTPClient client = new GNTPClient(config, clientBootstrap);
+        client.notify(new Application("app"), new Notification("notification"));
+
+        verify(channelFuture).getCause();
     }
 
     private Matcher<Message> messageMatcher(final Message message) {

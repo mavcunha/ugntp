@@ -1,6 +1,6 @@
 package info.growl;
 
-import info.growl.gntp.Client;
+import info.growl.gntp.GNTPClient;
 import info.growl.gntp.Configuration;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +10,11 @@ import static org.mockito.Mockito.verify;
 
 public class GrowlTest {
 
-    private Client client;
+    private GNTPClient client;
 
     @Before
     public void setUp() {
-        client = mock(Client.class);
+        client = mock(GNTPClient.class);
     }
 
     @Test(expected = RuntimeException.class)

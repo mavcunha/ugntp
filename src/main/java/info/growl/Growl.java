@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 public class Growl {
 
     private Configuration config = new Configuration();
-    private Client client;
+    private GNTPClient client;
     private final Application application;
 
     public Growl(Application application) {
@@ -26,20 +26,20 @@ public class Growl {
         this.config = configuration;
     }
     
-    public Growl(Application application, Configuration configuration, Client client) {
+    public Growl(Application application, Configuration configuration, GNTPClient gntpClient) {
         this(application, configuration);
-        if(client == null)
-            throw new RuntimeException("Client must be not null");
-        this.client = client;
+        if(gntpClient == null)
+            throw new RuntimeException("GNTPClient must be not null");
+        this.client = gntpClient;
     }
 
     public void register(Notifications notifications) {
         client().register(application, notifications);
     }
 
-    private Client client() {
+    private GNTPClient client() {
         if(this.client == null)
-            this.client = new Client(config, bootstrapFromDefaults());
+            this.client = new GNTPClient(config, bootstrapFromDefaults());
         return this.client;
     }
 
