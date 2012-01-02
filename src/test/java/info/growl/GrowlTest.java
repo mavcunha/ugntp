@@ -1,9 +1,21 @@
 package info.growl;
 
+import info.growl.gntp.Client;
 import info.growl.gntp.Configuration;
+import org.junit.Before;
 import org.junit.Test;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
 public class GrowlTest {
+
+    private Client client;
+
+    @Before
+    public void setUp() {
+        client = mock(Client.class);
+    }
 
     @Test(expected = RuntimeException.class)
     public void shouldNotAcceptNullAsApplication() {
@@ -18,5 +30,27 @@ public class GrowlTest {
     @Test(expected = RuntimeException.class)
     public void shouldNotAcceptNullAsClient() {
         new Growl(new Application("app"), new Configuration(), null);
+    }
+
+    @Test
+    public void shouldCallRegisterOnClient() {
+        Application app = new Application("app");
+        Notifications notifications = new Notifications(new Notification("my notification"));
+
+        Growl growl = new Growl(app, new Configuration(), client);
+        growl.register(notifications);
+
+        verify(client).register(app, notifications);
+    }
+
+    @Test
+    public void shouldCallNotifyOnClient() {
+        Application app = new Application("app");
+        Notification notification = new Notification("my notification");
+
+        Growl growl = new Growl(app, new Configuration(), client);
+        growl.notify(notification);
+        
+        verify(client).notify(app,notification);
     }
 }

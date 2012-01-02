@@ -13,11 +13,6 @@ public class Application {
     }
 
     public String name() {
-        return this.name;
-    }
-
-    @Override
-    public String toString() {
         return "Application-Name: " + this.name + Delimiter.EOL;
     }
 }

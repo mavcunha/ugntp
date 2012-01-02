@@ -30,33 +30,44 @@ public class ClientTest {
         this.clientBootstrap = mock(ClientBootstrap.class);
         this.channelFuture = mock(ChannelFuture.class);
         this.config = new Configuration();
-    }
-
-    @Test
-    public void shouldSendMessage() {
-
-        Application application     = new Application("my app");
-        Notifications notifications = new Notifications(new Notification("my notification"));
-
-        Client client = new Client(config, clientBootstrap);
 
         when(clientBootstrap.connect(any(SocketAddress.class))).thenReturn(channelFuture);
         when(channelFuture.isSuccess()).thenReturn(true);
         when(channelFuture.getChannel()).thenReturn(channel);
-
-        client.register(application, notifications);
-        
-        verify(channel).write(argThat(registerMessageMatcher(application, notifications)));
     }
 
-    private Matcher<Message> registerMessageMatcher(final Application application, final Notifications notifications) {
+    @Test
+    public void shouldSendMessage() {
+        Application application = new Application("my app");
+        Notifications notifications = new Notifications(new Notification("my notification"));
+
+        Client client = new Client(config, clientBootstrap);
+
+        client.register(application, notifications);
+
+        Message registerMessage = new RegisterMessage(application, notifications);
+        verify(channel).write(argThat(messageMatcher(registerMessage)));
+    }
+
+    @Test
+    public void shouldSendNotifyMessage() {
+        Application application = new Application("my app");
+        Notification notification = new Notification("my notification");
+
+        Client client = new Client(config, clientBootstrap);
+        
+        client.notify(application, notification);
+
+        NotifyMessage notifyMessage = new NotifyMessage(application, notification);
+        verify(channel).write(argThat(messageMatcher(notifyMessage)));
+    }
+
+    private Matcher<Message> messageMatcher(final Message message) {
         return new ArgumentMatcher<Message>(){
-            Message message = new RegisterMessage(application, notifications);
             @Override
             public boolean matches(Object o) {
                 return message.render().equals(((Message)o).render());
             }
         };
     }
-
 }

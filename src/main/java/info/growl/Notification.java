@@ -26,4 +26,8 @@ public class Notification {
     public String enabled() {
         return "Notification-Enabled: " + (enabled ? "True" : "False") + Delimiter.EOL;
     }
+
+    public String title() {
+        return "Notification-Title: " + this.name + Delimiter.EOL;
+    }
 }

@@ -4,18 +4,16 @@ import info.growl.Notification;
 import info.growl.Notifications;
 import org.junit.Test;
 
-
-public class RegisterIntegration {
-
+public class NotifyIntegration {
     @Test
-    public void shouldRegisterApplication() {
-
+    public void shouldRegisterAndNotify() {
         Application application = new Application("My Application");
-        Notifications notifications = new Notifications(new Notification("My Notification"));
+        Notification notification = new Notification("My Notification");
+        Notifications notifications = new Notifications(notification);
 
         Growl growl = new Growl(application);
-
         growl.register(notifications);
-    }
 
+        growl.notify(notification);
+    }
 }

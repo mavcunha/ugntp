@@ -35,7 +35,7 @@ public class RegisterMessageTest extends MessageTest {
         return
                 message.header() +
                 application.toString() +
-                "Notifications-Count: 2" + EOL +
+                "Notifications-Count: " + notifications.size() + EOL +
                 EOL +
                 notifications.toString() +
                 EOM;

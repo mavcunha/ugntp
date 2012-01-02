@@ -26,6 +26,12 @@ public class NotificationTest {
     }
 
     @Test
+    public void shouldNotificationTitleDefaultToItsName() {
+        Notification notification = new Notification("My Notification");
+        assertThat(notification.title(), is("Notification-Title: My Notification" + Delimiter.EOL));
+    }
+
+    @Test
     public void newNotificationIsEnableByDefault() {
         Notification notification = new Notification("My Notification");
         assertThat(notification.enabled(), is("Notification-Enabled: True" + Delimiter.EOL));

@@ -37,10 +37,6 @@ public class Growl {
         client().register(application, notifications);
     }
 
-    public boolean isRegistered() {
-        return true;
-    }
-
     private Client client() {
         if(this.client == null)
             this.client = new Client(config, bootstrapFromDefaults());
@@ -56,5 +52,9 @@ public class Growl {
         ClientBootstrap bootstrap = new ClientBootstrap(factory);
         bootstrap.setPipelineFactory(new PipelineFactory(new MessageHandler()));
         return bootstrap;
+    }
+
+    public void notify(Notification notification) {
+        client().notify(application, notification);
     }
 }

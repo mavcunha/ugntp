@@ -1,6 +1,7 @@
 package info.growl.gntp;
 
 import info.growl.Application;
+import info.growl.Notification;
 import info.growl.Notifications;
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.ChannelFuture;
@@ -31,5 +32,9 @@ public class Client {
         } else {
             System.out.println("Fail: " + channelFuture.getCause());
         }
+    }
+
+    public void notify(Application application, Notification notification) {
+        send(new NotifyMessage(application, notification));
     }
 }

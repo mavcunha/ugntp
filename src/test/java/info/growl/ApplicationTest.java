@@ -14,20 +14,14 @@ public class ApplicationTest {
         new Application(null);
     }
 
-    @Test
-    public void shouldHaveAName() {
-        Application application = new Application("my application");
-        assertThat(application.name(), is("my application"));
-    }
-
     @Test(expected = RuntimeException.class)
     public void shouldNotAcceptAnEmptyName() {
         new Application("");
     }
 
     @Test
-    public void shouldReturnItSelfGNTPFormatted() {
+    public void shouldReturnNameGNTPFormatted() {
         Application application = new Application("My Application");
-        assertThat(application.toString(), is(equalTo("Application-Name: My Application" + Delimiter.EOL)));
+        assertThat(application.name(), is(equalTo("Application-Name: My Application" + Delimiter.EOL)));
     }
 }
