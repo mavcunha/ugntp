@@ -1,6 +1,8 @@
 package info.growl.gntp.io;
 
-import org.jboss.netty.channel.*;
+import org.jboss.netty.channel.ChannelHandlerContext;
+import org.jboss.netty.channel.ExceptionEvent;
+import org.jboss.netty.channel.SimpleChannelHandler;
 
 public class MessageHandler extends SimpleChannelHandler {
     @Override

@@ -1,6 +1,5 @@
 package info.growl;
 
-import info.growl.Configuration;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

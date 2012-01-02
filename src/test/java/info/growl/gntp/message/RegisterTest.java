@@ -6,7 +6,8 @@ import info.growl.Notifications;
 import org.junit.Before;
 import org.junit.Test;
 
-import static info.growl.gntp.Delimiter.*;
+import static info.growl.gntp.Delimiter.EOL;
+import static info.growl.gntp.Delimiter.EOM;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

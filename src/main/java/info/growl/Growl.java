@@ -1,6 +1,6 @@
 package info.growl;
 
-import info.growl.gntp.*;
+import info.growl.gntp.GNTPClient;
 import info.growl.gntp.io.MessageHandler;
 import info.growl.gntp.io.PipelineFactory;
 import org.jboss.netty.bootstrap.ClientBootstrap;

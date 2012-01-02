@@ -3,7 +3,8 @@ package info.growl.gntp.message;
 import info.growl.Application;
 import info.growl.Notifications;
 
-import static info.growl.gntp.Delimiter.*;
+import static info.growl.gntp.Delimiter.EOL;
+import static info.growl.gntp.Delimiter.EOM;
 
 public class Register extends Message {
 
