@@ -1,14 +1,15 @@
-package info.growl.gntp;
+package info.growl.gntp.message;
 
 import info.growl.Application;
 import info.growl.Notification;
+import info.growl.gntp.Delimiter;
 
-public class NotifyMessage extends Message {
+public class Notify extends Message {
 
     private final Application application;
     private final Notification notification;
 
-    public NotifyMessage(Application application, Notification notification) {
+    public Notify(Application application, Notification notification) {
         this.application = application;
         this.notification = notification;
     }

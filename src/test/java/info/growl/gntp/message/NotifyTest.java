@@ -1,21 +1,22 @@
-package info.growl.gntp;
+package info.growl.gntp.message;
 
 import info.growl.Application;
 import info.growl.Notification;
+import info.growl.gntp.Delimiter;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class NotifyMessageTest extends MessageTest {
+public class NotifyTest extends MessageTest {
 
     private Application application;
     private Notification notification;
 
     @Test
     public void shouldRenderAsGNTPFormatted() {
-        NotifyMessage notifyMessage = new NotifyMessage(application, notification);
+        Notify notifyMessage = new Notify(application, notification);
         assertThat(notifyMessage.render(), is(
                 notifyMessage.header() +
                         application.name() +
@@ -32,6 +33,6 @@ public class NotifyMessageTest extends MessageTest {
 
     @Override
     Message getConcrete() {
-        return new NotifyMessage(application, notification);
+        return new Notify(application, notification);
     }
 }

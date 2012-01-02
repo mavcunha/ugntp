@@ -1,5 +1,6 @@
-package info.growl.gntp;
+package info.growl.gntp.io;
 
+import info.growl.gntp.Delimiter;
 import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.ChannelPipeline;
 import org.jboss.netty.channel.ChannelPipelineFactory;

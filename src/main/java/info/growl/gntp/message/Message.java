@@ -1,4 +1,7 @@
-package info.growl.gntp;
+package info.growl.gntp.message;
+
+import info.growl.gntp.Delimiter;
+import info.growl.gntp.Protocol;
 
 public abstract class Message {
     public abstract String render();

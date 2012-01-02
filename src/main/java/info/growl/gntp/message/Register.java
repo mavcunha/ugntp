@@ -1,17 +1,17 @@
-package info.growl.gntp;
+package info.growl.gntp.message;
 
 import info.growl.Application;
 import info.growl.Notifications;
 
 import static info.growl.gntp.Delimiter.*;
 
-public class RegisterMessage extends Message {
+public class Register extends Message {
 
     private static final String MESSAGE_TYPE = "REGISTER";
     private final Application application;
     private final Notifications notifications;
 
-    public RegisterMessage(Application application, Notifications notifications) {
+    public Register(Application application, Notifications notifications) {
         this.application = application;
         this.notifications = notifications;
     }

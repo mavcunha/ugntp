@@ -1,5 +1,6 @@
-package info.growl.gntp;
+package info.growl.gntp.io;
 
+import info.growl.gntp.message.Message;
 import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;

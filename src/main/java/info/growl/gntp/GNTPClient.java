@@ -1,8 +1,12 @@
 package info.growl.gntp;
 
 import info.growl.Application;
+import info.growl.Configuration;
 import info.growl.Notification;
 import info.growl.Notifications;
+import info.growl.gntp.message.Message;
+import info.growl.gntp.message.Notify;
+import info.growl.gntp.message.Register;
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.ChannelFuture;
 
@@ -21,7 +25,7 @@ public class GNTPClient {
     }
 
     public void register(Application application, Notifications notifications) {
-        send(new RegisterMessage(application, notifications));
+        send(new Register(application, notifications));
     }
 
     private void send(Message message) {
@@ -35,6 +39,6 @@ public class GNTPClient {
     }
 
     public void notify(Application application, Notification notification) {
-        send(new NotifyMessage(application, notification));
+        send(new Notify(application, notification));
     }
 }

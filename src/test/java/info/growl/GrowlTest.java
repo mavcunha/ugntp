@@ -1,7 +1,6 @@
 package info.growl;
 
 import info.growl.gntp.GNTPClient;
-import info.growl.gntp.Configuration;
 import org.junit.Before;
 import org.junit.Test;
 

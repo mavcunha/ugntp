@@ -1,4 +1,4 @@
-package info.growl.gntp;
+package info.growl.gntp.io;
 
 import org.jboss.netty.channel.*;
 

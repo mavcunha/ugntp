@@ -1,6 +1,8 @@
 package info.growl;
 
 import info.growl.gntp.*;
+import info.growl.gntp.io.MessageHandler;
+import info.growl.gntp.io.PipelineFactory;
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.ChannelFactory;
 import org.jboss.netty.channel.socket.nio.NioClientSocketChannelFactory;

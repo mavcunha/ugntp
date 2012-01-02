@@ -1,5 +1,8 @@
-package info.growl.gntp;
+package info.growl.gntp.message;
 
+import info.growl.gntp.Delimiter;
+import info.growl.gntp.Protocol;
+import info.growl.gntp.message.Message;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

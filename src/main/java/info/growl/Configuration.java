@@ -1,4 +1,4 @@
-package info.growl.gntp;
+package info.growl;
 
 public class Configuration {
 

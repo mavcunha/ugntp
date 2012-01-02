@@ -1,8 +1,12 @@
 package info.growl.gntp;
 
 import info.growl.Application;
+import info.growl.Configuration;
 import info.growl.Notification;
 import info.growl.Notifications;
+import info.growl.gntp.message.Message;
+import info.growl.gntp.message.Notify;
+import info.growl.gntp.message.Register;
 import org.hamcrest.Matcher;
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.Channel;
@@ -45,7 +49,7 @@ public class GNTPClientTest {
 
         client.register(application, notifications);
 
-        Message registerMessage = new RegisterMessage(application, notifications);
+        Message registerMessage = new Register(application, notifications);
         verify(channel).write(argThat(messageMatcher(registerMessage)));
     }
 
@@ -58,7 +62,7 @@ public class GNTPClientTest {
         
         client.notify(application, notification);
 
-        NotifyMessage notifyMessage = new NotifyMessage(application, notification);
+        Notify notifyMessage = new Notify(application, notification);
         verify(channel).write(argThat(messageMatcher(notifyMessage)));
     }
 

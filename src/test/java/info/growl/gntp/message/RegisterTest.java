@@ -1,4 +1,4 @@
-package info.growl.gntp;
+package info.growl.gntp.message;
 
 import info.growl.Application;
 import info.growl.Notification;
@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class RegisterMessageTest extends MessageTest {
+public class RegisterTest extends MessageTest {
 
     private Application application;
     private Notifications notifications;
@@ -27,7 +27,7 @@ public class RegisterMessageTest extends MessageTest {
 
     @Test
     public void shouldReturnItSelfFormatted() {
-        Message message = new RegisterMessage(application, notifications);
+        Message message = new Register(application, notifications);
         assertThat(message.render(), is(equalTo(registerMessageBody(message))));
     }
 
@@ -43,6 +43,6 @@ public class RegisterMessageTest extends MessageTest {
 
     @Override
     Message getConcrete() {
-        return new RegisterMessage(application, notifications);
+        return new Register(application, notifications);
     }
 }
