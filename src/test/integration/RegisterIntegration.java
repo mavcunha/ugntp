@@ -14,7 +14,8 @@ public class RegisterIntegration {
     public void shouldRegisterApplication() {
 
         Application application = new Application("My Application");
-        Notifications nots = new Notifications(new Notification("My Notification"));
+        Notification notification = new Notification("My Notification");
+        Notifications nots = new Notifications(notification);
 
         Growl growl = new Growl(application);
 

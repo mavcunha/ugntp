@@ -20,16 +20,10 @@ public class Notification {
     }
 
     public String name() {
-        return this.name;
+        return "Notification-Name: " + this.name + Delimiter.EOL;
     }
 
-    @Override
-    public String toString() {
-        return "Notification-Name: " + this.name + Delimiter.EOL +
-               "Notification-Enabled: " + (enabled ? "True" : "False") + Delimiter.EOL;
-    }
-
-    public boolean isEnabled() {
-        return this.enabled;
+    public String enabled() {
+        return "Notification-Enabled: " + (enabled ? "True" : "False") + Delimiter.EOL;
     }
 }

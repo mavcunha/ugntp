@@ -9,12 +9,6 @@ import static org.junit.Assert.assertThat;
 
 public class NotificationTest {
 
-    @Test
-    public void shouldHaveAName() {
-        Notification notification = new Notification("a notification");
-        assertThat(notification.name(), is("a notification"));
-    }
-
     @Test(expected = RuntimeException.class)
     public void shouldNotAcceptANullName() {
         new Notification(null);
@@ -26,23 +20,20 @@ public class NotificationTest {
     }
 
     @Test
-    public void shouldReturnItSelfGNTPFormatted() {
+    public void shouldReturnItsNameGNTPFormatted() {
         Notification notification = new Notification("My Notification");
-        assertThat(notification.toString(), is(equalTo(
-                "Notification-Name: My Notification" + Delimiter.EOL +
-                "Notification-Enabled: True" + Delimiter.EOL
-        )));
+        assertThat(notification.name(), is(equalTo("Notification-Name: My Notification" + Delimiter.EOL)));
     }
 
     @Test
     public void newNotificationIsEnableByDefault() {
         Notification notification = new Notification("My Notification");
-        assertThat(notification.isEnabled(), is(true));
+        assertThat(notification.enabled(), is("Notification-Enabled: True" + Delimiter.EOL));
     }
 
     @Test
     public void notificationCanBeCreatedDisabled() {
         Notification notification = new Notification("My Notification", false);
-        assertThat(notification.isEnabled(), is(false));
+        assertThat(notification.enabled(), is("Notification-Enabled: False" + Delimiter.EOL));
     }
 }

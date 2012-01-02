@@ -21,7 +21,7 @@ public class PipelineFactory implements ChannelPipelineFactory {
         ChannelPipeline pipeline = Channels.pipeline();
         pipeline.addLast("frame-decoder", new DelimiterBasedFrameDecoder(Integer.MAX_VALUE,
                 ChannelBuffers.wrappedBuffer(Delimiter.EOM.toString().getBytes())));
-        pipeline.addLast("stringDecoder", new StringDecoder(CharsetUtil.UTF_8));
+        pipeline.addLast("message-decoder", new StringDecoder(CharsetUtil.UTF_8));
         pipeline.addLast("message-encoder", new MessageEncoder());
         pipeline.addLast("handler", messageHandler);
         return pipeline;

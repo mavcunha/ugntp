@@ -1,7 +1,5 @@
 package info.growl;
 
-import info.growl.Notification;
-import info.growl.Notifications;
 import info.growl.gntp.Delimiter;
 import org.junit.Test;
 
@@ -38,7 +36,8 @@ public class NotificationsTest {
 
         Notifications notifications = new Notifications(first,second);
         assertThat(notifications.toString(), is(equalTo(
-                first.toString() + Delimiter.EOL + second.toString()
+                first.name() + first.enabled() + Delimiter.EOL +
+                second.name() + second.enabled()
         )));
     }
 }

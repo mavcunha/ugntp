@@ -1,10 +1,10 @@
 package info.growl;
 
-import com.google.common.base.Joiner;
 import info.growl.gntp.Delimiter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Notifications {
@@ -26,6 +26,17 @@ public class Notifications {
 
     @Override
     public String toString() {
-        return Joiner.on(Delimiter.EOL.toString()).join(notifications);
+        String response = "";
+        for (Iterator<Notification> iterator = notifications.iterator(); iterator.hasNext(); ) {
+            Notification notification = iterator.next();
+            response += registerInfo(notification);
+            if(iterator.hasNext())
+                response += Delimiter.EOL;
+        }
+        return response;
+    }
+
+    private String registerInfo(Notification notification) {
+        return notification.name() + notification.enabled();
     }
 }
