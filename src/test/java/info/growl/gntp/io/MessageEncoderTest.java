@@ -25,7 +25,7 @@ public class MessageEncoderTest {
     }
 
     @Test
-    public void shouldWriteIntoChannelAMessageAsBytes() throws Exception {
+    public void shouldEncapsulateMessageInChannelBuffer() throws Exception {
         MessageEncoder encoder = new MessageEncoder();
 
         Message message = new Register(

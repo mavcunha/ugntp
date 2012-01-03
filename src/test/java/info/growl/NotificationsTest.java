@@ -1,8 +1,8 @@
 package info.growl;
 
-import info.growl.gntp.Delimiter;
 import org.junit.Test;
 
+import static info.growl.gntp.Delimiter.EOL;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -35,9 +35,15 @@ public class NotificationsTest {
         Notification second = new Notification("second");
 
         Notifications notifications = new Notifications(first,second);
-        assertThat(notifications.toString(), is(equalTo(
-                first.name() + first.enabled() + Delimiter.EOL +
-                second.name() + second.enabled()
-        )));
+        assertThat(notifications.toString(), is(equalTo(notificationsListAsString())));
+    }
+
+    private String notificationsListAsString() {
+        return
+        "Notification-Name: first" + EOL +
+        "Notification-Enabled: True" + EOL +
+        EOL +
+        "Notification-Name: second" + EOL +
+        "Notification-Enabled: True" + EOL;
     }
 }

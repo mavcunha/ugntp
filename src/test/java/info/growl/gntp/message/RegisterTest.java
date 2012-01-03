@@ -29,17 +29,21 @@ public class RegisterTest extends MessageTest {
     @Test
     public void shouldReturnItSelfFormatted() {
         Message message = new Register(application, notifications);
-        assertThat(message.render(), is(equalTo(registerMessageBody(message))));
+        assertThat(message.render(), is(equalTo(registerMessageAsString(message))));
     }
 
-    private String registerMessageBody(Message message) {
+    private String registerMessageAsString(Message message) {
         return
-                message.header() +
-                application.toString() +
-                "Notifications-Count: " + notifications.size() + EOL +
-                EOL +
-                notifications.toString() +
-                EOM;
+            message.header() +
+            "Application-Name: My Application" + EOL +
+            "Notifications-Count: 2" + EOL +
+            EOL +
+            "Notification-Name: 1 notification" + EOL +
+            "Notification-Enabled: True" + EOL +
+            EOL +
+            "Notification-Name: 2 notification" + EOL +
+            "Notification-Enabled: True" + EOL +
+            EOM;
     }
 
     @Override

@@ -13,7 +13,6 @@ public class NotifyIntegration {
 
         Growl growl = new Growl(application);
         growl.register(notifications);
-
         growl.notify(notification);
     }
 }

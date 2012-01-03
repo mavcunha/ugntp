@@ -15,9 +15,8 @@ public class Notifications {
         this.notifications.addAll(Arrays.asList(notifications));
     }
 
-    public Notifications add(Notification notification) {
+    public void add(Notification notification) {
         this.notifications.add(notification);
-        return this;
     }
 
     public int size() {

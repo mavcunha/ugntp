@@ -8,7 +8,6 @@ import static info.growl.gntp.Delimiter.EOM;
 
 public class Register extends Message {
 
-    private static final String MESSAGE_TYPE = "REGISTER";
     private final Application application;
     private final Notifications notifications;
 
@@ -21,7 +20,7 @@ public class Register extends Message {
     public String render() {
         return
             header() +
-            this.application.toString() +
+            this.application.name() +
             "Notifications-Count: " + this.notifications.size() + EOL +
             EOL +
             this.notifications.toString() +
@@ -30,6 +29,6 @@ public class Register extends Message {
 
     @Override
     public String type() {
-        return MESSAGE_TYPE;
+        return "REGISTER";
     }
 }

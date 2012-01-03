@@ -9,13 +9,10 @@ public class RegisterIntegration {
 
     @Test
     public void shouldRegisterApplication() {
-
         Application application = new Application("My Application");
         Notifications notifications = new Notifications(new Notification("My Notification"));
 
-        Growl growl = new Growl(application);
-
-        growl.register(notifications);
+        new Growl(application).register(notifications);
     }
 
 }
