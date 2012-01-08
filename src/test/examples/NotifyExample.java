@@ -4,7 +4,7 @@ import info.growl.Notification;
 import info.growl.Notifications;
 import org.junit.Test;
 
-public class NotifyIntegration {
+public class NotifyExample {
     @Test
     public void shouldRegisterAndNotify() throws InterruptedException {
         Application application = new Application("My Application");

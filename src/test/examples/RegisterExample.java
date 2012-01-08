@@ -5,7 +5,7 @@ import info.growl.Notifications;
 import org.junit.Test;
 
 
-public class RegisterIntegration {
+public class RegisterExample {
 
     @Test
     public void shouldRegisterApplication() {
