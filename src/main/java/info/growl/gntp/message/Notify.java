@@ -20,7 +20,8 @@ public class Notify extends OutgoingMessage {
                 application.name() +
                 notification.name() +
                 notification.title() +
-                notification.text() + Delimiter.EOM;
+                notification.text() +
+                notification.icon() + Delimiter.EOM;
     }
 
     @Override

@@ -3,6 +3,9 @@ package info.growl;
 import info.growl.gntp.Delimiter;
 import org.junit.Test;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -47,5 +50,18 @@ public class NotificationTest {
     public void notificationCanHaveAText() {
         Notification notification = new Notification("Title", "Description");
         assertThat(notification.text(), is("Notification-Text: Description" + Delimiter.EOL));
+    }
+
+    @Test
+    public void notificationCanHaveAnIcon() throws URISyntaxException {
+        Notification notification = new Notification("Title");
+        notification.icon(new URI("file:///some-icon.png"));
+        assertThat(notification.icon(), is("Notification-Icon: file:///some-icon.png" + Delimiter.EOL));
+    }
+
+    @Test
+    public void notificationWithoutIconDoNotGenerateIconInfomation() {
+        Notification notification = new Notification("Title");
+        assertThat(notification.icon(), is(""));
     }
 }

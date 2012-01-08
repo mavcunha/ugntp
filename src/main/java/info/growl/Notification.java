@@ -2,11 +2,14 @@ package info.growl;
 
 import info.growl.gntp.Delimiter;
 
+import java.net.URI;
+
 public class Notification {
 
     private final String name;
     private boolean enabled = true;
     private String text = "";
+    private URI icon;
 
     public Notification(String name) {
         if(name == null || name.isEmpty())
@@ -39,5 +42,15 @@ public class Notification {
 
     public String text() {
         return "Notification-Text: " + this.text + Delimiter.EOL;
+    }
+
+    public String icon() {
+        if(this.icon != null)
+            return "Notification-Icon: " + this.icon.toString() + Delimiter.EOL;
+        return "";
+    }
+
+    public void icon(URI icon) {
+        this.icon = icon;
     }
 }

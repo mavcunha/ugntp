@@ -24,10 +24,8 @@ public class Application {
     }
 
     public String icon() {
-        if (this.iconURL != null) {
+        if (this.iconURL != null)
             return "Application-Icon: " + this.iconURL.toASCIIString() + Delimiter.EOL;
-        } else {
-            return "";
-        }
+        return "";
     }
 }
