@@ -6,7 +6,7 @@ import info.growl.Notifications;
 import static info.growl.gntp.Delimiter.EOL;
 import static info.growl.gntp.Delimiter.EOM;
 
-public class Register extends Message {
+public class Register extends OutgoingMessage {
 
     private final Application application;
     private final Notifications notifications;

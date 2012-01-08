@@ -7,9 +7,9 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public abstract class MessageTest {
+public abstract class OutgoingMessageTest {
 
-    abstract Message getConcrete();
+    abstract OutgoingMessage getConcrete();
     
     @Test
     public void shouldReturnUnencryptedHeader() {

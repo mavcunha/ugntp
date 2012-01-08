@@ -12,7 +12,8 @@ define "gntp" do
     'junit:junit:jar:4.10',
     'org.jboss.netty:netty:jar:3.2.7.Final',
     'org.mockito:mockito-all:jar:1.9.0',
-    'com.google.guava:guava:jar:10.0.1']
+    'com.google.guava:guava:jar:10.0.1',
+    'log4j:log4j:jar:1.2.16']
   test.exclude '*Integration'
 end
 

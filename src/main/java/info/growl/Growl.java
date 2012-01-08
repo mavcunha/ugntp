@@ -52,6 +52,7 @@ public class Growl {
                         Executors.newCachedThreadPool(),
                         Executors.newCachedThreadPool());
         ClientBootstrap bootstrap = new ClientBootstrap(factory);
+        bootstrap.setOption("connectTimeoutMillis",1000);
         bootstrap.setPipelineFactory(new PipelineFactory(new MessageHandler()));
         return bootstrap;
     }

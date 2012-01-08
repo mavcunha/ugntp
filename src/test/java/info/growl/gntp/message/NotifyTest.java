@@ -10,7 +10,7 @@ import static info.growl.gntp.Delimiter.EOM;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class NotifyTest extends MessageTest {
+public class NotifyTest extends OutgoingMessageTest {
 
     private Application application;
     private Notification notification;
@@ -36,7 +36,7 @@ public class NotifyTest extends MessageTest {
     }
 
     @Override
-    Message getConcrete() {
+    OutgoingMessage getConcrete() {
         return new Notify(application, notification);
     }
 }

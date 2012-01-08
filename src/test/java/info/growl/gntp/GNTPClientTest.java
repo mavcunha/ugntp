@@ -4,7 +4,7 @@ import info.growl.Application;
 import info.growl.Configuration;
 import info.growl.Notification;
 import info.growl.Notifications;
-import info.growl.gntp.message.Message;
+import info.growl.gntp.message.OutgoingMessage;
 import info.growl.gntp.message.Notify;
 import info.growl.gntp.message.Register;
 import org.hamcrest.Matcher;
@@ -49,7 +49,7 @@ public class GNTPClientTest {
 
         client.register(application, notifications);
 
-        Message registerMessage = new Register(application, notifications);
+        OutgoingMessage registerMessage = new Register(application, notifications);
         verify(channel).write(argThat(messageMatcher(registerMessage)));
     }
 
@@ -66,22 +66,11 @@ public class GNTPClientTest {
         verify(channel).write(argThat(messageMatcher(notifyMessage)));
     }
 
-    @Test
-    public void shouldGetCauseIfCannotConnect() {
-        when(channelFuture.isSuccess()).thenReturn(false);
-        when(channelFuture.getCause()).thenReturn(new RuntimeException());
-
-        GNTPClient client = new GNTPClient(config, clientBootstrap);
-        client.notify(new Application("app"), new Notification("notification"));
-
-        verify(channelFuture).getCause();
-    }
-
-    private Matcher<Message> messageMatcher(final Message message) {
-        return new ArgumentMatcher<Message>(){
+    private Matcher<OutgoingMessage> messageMatcher(final OutgoingMessage message) {
+        return new ArgumentMatcher<OutgoingMessage>(){
             @Override
             public boolean matches(Object o) {
-                return message.render().equals(((Message)o).render());
+                return message.render().equals(((OutgoingMessage)o).render());
             }
         };
     }

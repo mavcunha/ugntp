@@ -4,8 +4,8 @@ import info.growl.Application;
 import info.growl.Configuration;
 import info.growl.Notification;
 import info.growl.Notifications;
-import info.growl.gntp.message.Message;
 import info.growl.gntp.message.Notify;
+import info.growl.gntp.message.OutgoingMessage;
 import info.growl.gntp.message.Register;
 import org.jboss.netty.bootstrap.ClientBootstrap;
 import org.jboss.netty.channel.ChannelFuture;
@@ -28,17 +28,15 @@ public class GNTPClient {
         send(new Register(application, notifications));
     }
 
-    private void send(Message message) {
+    public void notify(Application application, Notification notification) {
+        send(new Notify(application, notification));
+    }
+
+    private void send(OutgoingMessage message) {
         ChannelFuture channelFuture = bootstrap.connect(socketAddress);
         channelFuture.awaitUninterruptibly(2, TimeUnit.SECONDS);
         if (channelFuture.isSuccess()) {
             channelFuture.getChannel().write(message);
-        } else {
-            channelFuture.getCause().printStackTrace();
         }
-    }
-
-    public void notify(Application application, Notification notification) {
-        send(new Notify(application, notification));
     }
 }

@@ -3,7 +3,7 @@ package info.growl.gntp.io;
 import info.growl.Application;
 import info.growl.Notification;
 import info.growl.Notifications;
-import info.growl.gntp.message.Message;
+import info.growl.gntp.message.OutgoingMessage;
 import info.growl.gntp.message.Register;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
@@ -28,7 +28,7 @@ public class MessageEncoderTest {
     public void shouldEncapsulateMessageInChannelBuffer() throws Exception {
         MessageEncoder encoder = new MessageEncoder();
 
-        Message message = new Register(
+        OutgoingMessage message = new Register(
                 new Application("my app"),
                 new Notifications(new Notification("notification")));
 

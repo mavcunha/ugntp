@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class RegisterTest extends MessageTest {
+public class RegisterTest extends OutgoingMessageTest {
 
     private Application application;
     private Notifications notifications;
@@ -28,11 +28,11 @@ public class RegisterTest extends MessageTest {
 
     @Test
     public void shouldReturnItSelfFormatted() {
-        Message message = new Register(application, notifications);
+        OutgoingMessage message = new Register(application, notifications);
         assertThat(message.render(), is(equalTo(registerMessageAsString(message))));
     }
 
-    private String registerMessageAsString(Message message) {
+    private String registerMessageAsString(OutgoingMessage message) {
         return
             message.header() +
             "Application-Name: My Application" + EOL +
@@ -47,7 +47,7 @@ public class RegisterTest extends MessageTest {
     }
 
     @Override
-    Message getConcrete() {
+    OutgoingMessage getConcrete() {
         return new Register(application, notifications);
     }
 }

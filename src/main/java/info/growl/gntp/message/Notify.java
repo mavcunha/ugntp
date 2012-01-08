@@ -4,7 +4,7 @@ import info.growl.Application;
 import info.growl.Notification;
 import info.growl.gntp.Delimiter;
 
-public class Notify extends Message {
+public class Notify extends OutgoingMessage {
 
     private final Application application;
     private final Notification notification;

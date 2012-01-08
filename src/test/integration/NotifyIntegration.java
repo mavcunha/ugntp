@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class NotifyIntegration {
     @Test
-    public void shouldRegisterAndNotify() {
+    public void shouldRegisterAndNotify() throws InterruptedException {
         Application application = new Application("My Application");
         Notification notification = new Notification("My Notification");
         Notifications notifications = new Notifications(notification);
@@ -14,5 +14,7 @@ public class NotifyIntegration {
         Growl growl = new Growl(application);
         growl.register(notifications);
         growl.notify(notification);
+        
+        Thread.sleep(2000);
     }
 }
