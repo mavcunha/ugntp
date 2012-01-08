@@ -37,7 +37,7 @@ For now these are implemented (only required attributes):
 You can use [Buildr](http://buildr.apache.org "Buildr") to build the
 library.
 
- buildr compile
+	buildr compile
 
 ### Dependencies
 
@@ -50,5 +50,5 @@ Growl.
 You can find some examples of usage in `src/test/examples` and you can
 run them by:
 
- buildr clean examples:test
+	buildr clean examples:test
 
