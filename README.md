@@ -31,3 +31,24 @@ For now these are implemented (only required attributes):
 	    growl.notify(notification);
 	  }
 	}
+
+## Building
+
+You can use [Buildr](http://buildr.apache.org "Buildr") to build the
+library.
+
+ buildr compile
+
+### Dependencies
+
+* [JBoss Netty](http://www.jboss.org/netty "JBoss Netty") to communicate with
+Growl.
+* [Log4j](http://logging.apache.org/log4j/1.2/ "Log4j") for logging.
+
+## Running the examples
+
+You can find some examples of usage in `src/test/examples` and you can
+run them by:
+
+ buildr clean examples:test
+
