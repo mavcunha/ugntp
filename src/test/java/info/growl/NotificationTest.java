@@ -42,4 +42,10 @@ public class NotificationTest {
         Notification notification = new Notification("My Notification", false);
         assertThat(notification.enabled(), is("Notification-Enabled: False" + Delimiter.EOL));
     }
+
+    @Test
+    public void notificationCanHaveAText() {
+        Notification notification = new Notification("Title", "Description");
+        assertThat(notification.text(), is("Notification-Text: Description" + Delimiter.EOL));
+    }
 }

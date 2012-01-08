@@ -18,7 +18,7 @@ public class NotifyTest extends OutgoingMessageTest {
     @Before
     public void setUp() {
         application = new Application("my application");
-        notification = new Notification("my notification");
+        notification = new Notification("my notification","my notification text");
     }
 
     @Test
@@ -32,7 +32,8 @@ public class NotifyTest extends OutgoingMessageTest {
             message.header() +
             "Application-Name: my application" + EOL +
             "Notification-Name: my notification" + EOL +
-            "Notification-Title: my notification" + EOL + EOM;
+            "Notification-Title: my notification" + EOL + 
+            "Notification-Text: my notification text" + EOL + EOM;
     }
 
     @Override

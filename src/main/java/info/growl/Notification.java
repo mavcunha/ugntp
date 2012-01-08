@@ -6,6 +6,7 @@ public class Notification {
 
     private final String name;
     private boolean enabled = true;
+    private String text = "";
 
     public Notification(String name) {
         if(name == null || name.isEmpty())
@@ -19,6 +20,11 @@ public class Notification {
         enabled = enable;
     }
 
+    public Notification(String name, String text) {
+        this(name);
+        this.text = text;
+    }
+
     public String name() {
         return "Notification-Name: " + this.name + Delimiter.EOL;
     }
@@ -29,5 +35,9 @@ public class Notification {
 
     public String title() {
         return "Notification-Title: " + this.name + Delimiter.EOL;
+    }
+
+    public String text() {
+        return "Notification-Text: " + this.text + Delimiter.EOL;
     }
 }

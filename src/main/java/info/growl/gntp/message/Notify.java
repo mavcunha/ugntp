@@ -19,7 +19,8 @@ public class Notify extends OutgoingMessage {
         return header() +
                 application.name() +
                 notification.name() +
-                notification.title() + Delimiter.EOM;
+                notification.title() +
+                notification.text() + Delimiter.EOM;
     }
 
     @Override

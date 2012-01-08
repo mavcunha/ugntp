@@ -8,7 +8,7 @@ public class NotifyIntegration {
     @Test
     public void shouldRegisterAndNotify() throws InterruptedException {
         Application application = new Application("My Application");
-        Notification notification = new Notification("My Notification");
+        Notification notification = new Notification("My Notification","My Notification Text");
         Notifications notifications = new Notifications(notification);
 
         Growl growl = new Growl(application);
