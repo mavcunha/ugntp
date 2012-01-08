@@ -21,6 +21,7 @@ public class Register extends OutgoingMessage {
         return
             header() +
             this.application.name() +
+            this.application.icon() +
             "Notifications-Count: " + this.notifications.size() + EOL +
             EOL +
             this.notifications.toString() +
