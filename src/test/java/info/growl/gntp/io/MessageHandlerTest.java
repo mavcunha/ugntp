@@ -1,7 +1,6 @@
 package info.growl.gntp.io;
 
 import info.growl.gntp.message.ErrorResponse;
-import info.growl.gntp.message.NullResponse;
 import org.apache.log4j.Logger;
 import org.jboss.netty.channel.ExceptionEvent;
 import org.jboss.netty.channel.MessageEvent;
@@ -53,11 +52,5 @@ public class MessageHandlerTest {
         handler.messageReceived(null,messageEvent);
 
         assertThat(handler.response(), is(instanceOf(ErrorResponse.class)));
-    }
-
-    @Test
-    public void messageHandlerHasANullResponseAsDefault() {
-        MessageHandler handler = new MessageHandler(logger);
-        assertThat(handler.response(), is(instanceOf(NullResponse.class)));
     }
 }

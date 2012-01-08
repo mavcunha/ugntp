@@ -26,14 +26,13 @@ public class GNTPClientTest {
     private ClientBootstrap clientBootstrap;
     private Configuration config;
     private Channel channel;
-    private ChannelFuture channelFuture;
 
     @Before
     public void setUp() {
         this.channel = mock(Channel.class);
         this.clientBootstrap = mock(ClientBootstrap.class);
-        this.channelFuture = mock(ChannelFuture.class);
         this.config = new Configuration();
+        ChannelFuture channelFuture = mock(ChannelFuture.class);
 
         when(clientBootstrap.connect(any(SocketAddress.class))).thenReturn(channelFuture);
         when(channelFuture.isSuccess()).thenReturn(true);

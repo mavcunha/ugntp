@@ -17,4 +17,8 @@ public abstract class Response {
         return "";
     }
 
+    @Override
+    public String toString() {
+        return this.getClass().getCanonicalName();
+    }
 }
