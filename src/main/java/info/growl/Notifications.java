@@ -38,4 +38,8 @@ public class Notifications {
     private String registerInfo(Notification notification) {
         return notification.name() + notification.enabled();
     }
+
+    public void clear() {
+        this.notifications.clear();
+    }
 }

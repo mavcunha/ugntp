@@ -38,6 +38,16 @@ public class NotificationsTest {
         assertThat(notifications.toString(), is(equalTo(notificationsListAsString())));
     }
 
+    @Test
+    public void shouldEmptyListOfNotificationsIfClearIsCalled() {
+        Notification n1 = new Notification("1");
+        Notification n2 = new Notification("2");
+        Notifications notifications = new Notifications(n1, n2);
+        assertThat(notifications.size(), is(2));
+        notifications.clear();
+        assertThat(notifications.size(), is(0));
+    }
+
     private String notificationsListAsString() {
         return
         "Notification-Name: first" + EOL +
