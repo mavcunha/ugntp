@@ -1,4 +1,4 @@
-#vim: et sw=2 ts=2 syntax=ruby
+# vim: et sw=2 ts=2 syntax=ruby
 VERSION_NUMBER = "1.0.0"
 GROUP = "gntp"
 COPYRIGHT = ""
